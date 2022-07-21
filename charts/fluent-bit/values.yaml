@@ -305,9 +305,9 @@ config:
 
     [INPUT]
         Name              tail
-        Path              /var/log/dog_breeds.txt
+        Path              /var/log/containers/*_env_ndz5a6_*.log
         Path_Key          filename
-        Tag               mylogs-env-rnawfy
+        Tag               mylogs-env-ndz5a6
         Parser            docker
         Mem_Buf_Limit     5MB
         Skip_Long_Lines   Off
@@ -340,6 +340,13 @@ config:
         Logstash_Format On
         Logstash_Prefix node
         Retry_Limit False
+        
+    [OUTPUT]
+        Name  es
+        Match mylogs-env-namespace.*
+        Host elasticsearch-master
+        Index mylogs-env-ndz5a6
+        Logstash_Format Off
 
   ## https://docs.fluentbit.io/manual/pipeline/parsers
   customParsers: |
