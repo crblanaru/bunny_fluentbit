@@ -303,7 +303,7 @@ config:
         Systemd_Filter _SYSTEMD_UNIT=kubelet.service
         Read_From_Tail On
 
-[INPUT]
+    [INPUT]
         Name              tail
         Path              /var/log/dog_breeds.txt
         Path_Key          filename
